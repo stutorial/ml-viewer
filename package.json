@@ -4,6 +4,7 @@
   "description": "Un visualizador de precios de MercadoLibre",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
