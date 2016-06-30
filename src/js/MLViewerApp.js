@@ -6,11 +6,17 @@ import Table from './Table';
 export default class MLAppViewer extends React.Component {
 	constructor(props) {
 		super(props);
+		const headers = [
+			{name: 'Nombre', index: 'title'},
+			{name: 'Precio', index: 'price'},
+			{name: 'Ciudad', index: 'address.city_name'},
+			{name: 'Disponible', index: 'available_quantity'},
+			{name: 'Vendido', index: 'sold_quantity'}
+		]
+		headers.forEach((elem, pos) => elem.key = pos);
+
 		this.state = {
-			headers: [
-				{key: 1, name: 'Nombre', index: 'title'},
-				{key: 2, name: 'Precio', index: 'price'}
-			],
+			headers: headers,
 			data: []
 		}
 	}
