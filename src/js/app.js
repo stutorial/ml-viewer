@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MLApp from './MLApp.js'
+import MLViewerApp from './MLViewerApp.js'
 
 const app = document.getElementById('app');
 
-ReactDOM.render(<MLApp/>, app);
+ReactDOM.render(<MLViewerApp />, app);
