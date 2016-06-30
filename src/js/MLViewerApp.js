@@ -18,30 +18,31 @@ export default class MLAppViewer extends React.Component {
 			.then((data) => data.results[0]);
 	}
 
-	sleep(milliseconds) {
-	  var start = new Date().getTime();
-	  for (var i = 0; i < 1e7; i++) {
-	    if ((new Date().getTime() - start) > milliseconds){
-	      break;
-	    }
-	  }
-	}
-
 	componentDidMount() {
 		const products = ["HyperX Cloud 2", "Geforce 1080"];
 		products.forEach(function (product_name) {
 			this.getInfo(product_name)
 				.then((product_info) => {
-					this.sleep(1000);
 					this.setState({ data: this.state.data.concat([product_info])})
 				})
 			}.bind(this));
 	}
 
+	handleSubmit() {
+		const input_text = document.getElementById("input-text");
+		const product_name = input_text.value;
+		if (product_name === "") return;
+		this.getInfo(product_name)
+			.then((product_info) => {
+				this.setState({ data: this.state.data.concat([product_info])})
+			});
+		input_text.value = "";
+	}
+
 	render() {
 		return (
 			<div>
-				<Input />
+				<Input handleSubmit={this.handleSubmit.bind(this)} />
 				<Table headers={this.state.headers} products={this.state.data}/>
 			</div>
 		)
