@@ -1,0 +1,19 @@
+{
+  "name": "ml-viewer",
+  "version": "1.0.0",
+  "description": "Un visualizador de precios de MercadoLibre",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stutorial/ml-viewer.git"
+  },
+  "author": "Santiago Perez Torre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stutorial/ml-viewer/issues"
+  },
+  "homepage": "https://github.com/stutorial/ml-viewer#readme"
+}
