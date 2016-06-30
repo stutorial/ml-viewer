@@ -7,7 +7,10 @@ export default class MLAppViewer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			headers: [{key: 1, name: 'Nombre'}, {key: 2, name: 'Precio'}],
+			headers: [
+				{key: 1, name: 'Nombre', index: 'title'},
+				{key: 2, name: 'Precio', index: 'price'}
+			],
 			data: []
 		}
 	}
@@ -28,8 +31,9 @@ export default class MLAppViewer extends React.Component {
 			}.bind(this));
 	}
 
-	handleSubmit() {
-		const input_text = document.getElementById("input-text");
+	handleSubmit(event) {
+		event.preventDefault();
+		let input_text = document.getElementById("input-text");
 		const product_name = input_text.value;
 		if (product_name === "") return;
 		this.getInfo(product_name)
