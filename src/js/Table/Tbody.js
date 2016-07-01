@@ -12,8 +12,18 @@ export default class Tbody extends React.Component {
 
 	createTd(header, product) {
 		const index = header.index;
+		const value = this.findValue(product, index);
+
+		let component;
+		if (header.link) {
+			const link = this.findValue(product, header.link);
+			component = <a href={link}>{value}</a>;
+		} else {
+			component = value;
+		}
+
 		return (
-			<td key={index}>{this.findValue(product, index)}</td>
+			<td key={index}>{component}</td>
 		)
 	}
 
@@ -28,7 +38,7 @@ export default class Tbody extends React.Component {
 	render() {
 		return (
 			<tbody>
-				{ this.props.products.map(this.createTr.bind(this)) }
+				{ this.props.products.map((product) => this.createTr(product)) }
 			</tbody>
 		)
 	}

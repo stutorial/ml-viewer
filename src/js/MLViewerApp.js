@@ -8,8 +8,8 @@ export default class MLAppViewer extends React.Component {
 		super(props);
 
 		const headers = [
-			{name: 'Nombre', index: 'title'},
-			{name: 'Vendedor', index: 'seller.nickname'},
+			{name: 'Nombre', index: 'title', link: 'permalink'},
+			{name: 'Vendedor', index: 'seller.nickname', link: 'seller.permalink'},
 			{name: 'Ventas', index: 'seller.seller_reputation.transactions.completed'},
 			{name: 'Porcentaje', index: 'seller.seller_reputation.transactions.ratings.positive'},
 			{name: 'Lugar', index: 'address.city_name'},
