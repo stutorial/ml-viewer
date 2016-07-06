@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Input from './Input';
-import Table from './Table';
+import Input from './MLViewerApp/Input';
+import Table from './MLViewerApp/Table';
 
-export default class MLAppViewer extends React.Component {
+export default class MLViewerApp extends React.Component {
 	constructor(props) {
 		super(props);
 
