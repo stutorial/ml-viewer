@@ -52,6 +52,19 @@ export default class MLAppViewer extends React.Component {
 			});
 	}
 
+	postProduct(product_name) {
+		fetch('http://localhost:3001/products', {
+		  method: 'POST',
+		  headers: {
+		    'Accept': 'application/json',
+		    'Content-Type': 'application/json'
+		  },
+		  body: JSON.stringify({
+		    name: product_name,
+		  })
+		});
+	}
+
 	componentDidMount() {
 		this.getProducts()
 			.then((products) => products.forEach(this.addProduct.bind(this)));
@@ -63,6 +76,7 @@ export default class MLAppViewer extends React.Component {
 		const product_name = input_text.value;
 		if (product_name === "") return;
 		this.addProduct(product_name);
+		this.postProduct(product_name);
 		input_text.value = "";
 	}
 
