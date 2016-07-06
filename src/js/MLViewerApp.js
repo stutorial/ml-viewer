@@ -36,25 +36,7 @@ export default class MLAppViewer extends React.Component {
 			.then((response) => response.json());
 	}
 
-	componentDidMount() {
-		const products = ["HyperX Cloud 2", "Geforce 1080"];
-		products.forEach((product_name) => {
-			this.getProductInfo(product_name)
-				.then((product_info) => {
-					this.getUserInfo(product_info.seller.id)
-						.then((seller_info) => {
-							product_info.seller = seller_info;
-							this.setState({ data: this.state.data.concat([product_info])})
-						})
-				})
-			});
-	}
-
-	handleSubmit(event) {
-		event.preventDefault();
-		const input_text = document.getElementById("input-text");
-		const product_name = input_text.value;
-		if (product_name === "") return;
+	addProduct(product_name) {
 		this.getProductInfo(product_name)
 			.then((product_info) => {
 				this.getUserInfo(product_info.seller.id)
@@ -63,6 +45,19 @@ export default class MLAppViewer extends React.Component {
 						this.setState({ data: this.state.data.concat([product_info])})
 					})
 			});
+	}
+
+	componentDidMount() {
+		const products = ["HyperX Cloud 2", "Geforce 1080"];
+		products.forEach(this.addProduct.bind(this));
+	}
+
+	handleSubmit(event) {
+		event.preventDefault();
+		const input_text = document.getElementById("input-text");
+		const product_name = input_text.value;
+		if (product_name === "") return;
+		this.addProduct(product_name);
 		input_text.value = "";
 	}
 
