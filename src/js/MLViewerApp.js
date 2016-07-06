@@ -25,6 +25,11 @@ export default class MLAppViewer extends React.Component {
 		}
 	}
 
+	getProducts() {
+		return fetch("http://localhost:3001/products")
+			.then((response) => response.json());
+	}
+
 	getProductInfo(product) {
 		return fetch("https://api.mercadolibre.com/sites/MLA/search?q=" + product + "&new=true&sort=price_asc&state=TUxBUENBUGw3M2E1&limit=1&condition=new%buying_mode=buy_it_now")
 			.then((response) =>	response.json())
@@ -48,8 +53,8 @@ export default class MLAppViewer extends React.Component {
 	}
 
 	componentDidMount() {
-		const products = ["HyperX Cloud 2", "Geforce 1080"];
-		products.forEach(this.addProduct.bind(this));
+		this.getProducts()
+			.then((products) => products.forEach(this.addProduct.bind(this)));
 	}
 
 	handleSubmit(event) {
