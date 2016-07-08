@@ -41,11 +41,12 @@ export default class MLViewerApp extends React.Component {
 			.then((response) => response.json());
 	}
 
-	addProduct(product_name) {
-		this.getProductInfo(product_name)
+	addProduct(product) {
+		this.getProductInfo(product.name)
 			.then((product_info) => {
 				this.getUserInfo(product_info.seller.id)
 					.then((seller_info) => {
+						product_info._id = product._id;
 						product_info.seller = seller_info;
 						this.setState({ data: this.state.data.concat([product_info])})
 					})
@@ -80,11 +81,16 @@ export default class MLViewerApp extends React.Component {
 		input_text.value = "";
 	}
 
+	handleDelete(product) {
+		event.preventDefault();
+
+	}
+
 	render() {
 		return (
 			<div>
 				<Input handleSubmit={this.handleSubmit.bind(this)} />
-				<Table headers={this.state.headers} products={this.state.data}/>
+				<Table headers={this.state.headers} products={this.state.data} handleDelete={this.handleDelete}/>
 			</div>
 		)
 	}

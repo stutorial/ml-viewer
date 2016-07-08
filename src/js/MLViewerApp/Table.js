@@ -8,7 +8,7 @@ export default class Table extends React.Component {
 		return (
 			<table>
 				<Thead headers={this.props.headers}/>
-				<Tbody headers={this.props.headers} products={this.props.products}/>
+				<Tbody headers={this.props.headers} products={this.props.products} handleDelete={this.props.handleDelete}/>
 			</table>
 		)
 	}

@@ -31,6 +31,12 @@ export default class Tbody extends React.Component {
 		return (
 			<tr key={product.id}>
 				{ this.props.headers.map((header) => this.createTd(header, product)) }
+				<td key="delete">
+					<a href="#"
+						onClick={this.props.handleDelete.bind(this, product)}
+						className="button alert tiny"
+						style={{ marginBottom: 0 }}>Delete</a>
+				</td>
 			</tr>
 		)
 	}
